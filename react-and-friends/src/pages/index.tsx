@@ -1,6 +1,17 @@
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
+import {getRepositories} from "../services/github.service";
 const IndexPage: React.FC<PageProps> = () => {
+    React.useEffect(() => {
+        const githubRepos = async () => {
+            const response = await getRepositories();
+
+            console.log('response: ', response);
+        }
+
+        githubRepos();
+    }, []);
+
   return (
     <main>
       <img

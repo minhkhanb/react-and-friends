@@ -1,11 +1,8 @@
-import { AxiosError, AxiosInterceptorManager, AxiosRequestConfig, AxiosResponse } from 'axios';
+import { AxiosInterceptorManager, AxiosRequestConfig, AxiosResponse } from 'axios';
 import axiosInstance from '../axios';
-import {
-  memoizedCheckTokenIsExpired,
-  memoizedRefreshToken,
-} from '@src/utils/api/utils/refreshToken';
-import { store } from '@src/store';
-import { logout } from '@src/store/actionCreators/auth';
+
+const memoizedCheckTokenIsExpired = async () => true;
+const memoizedRefreshToken = async () => console.log('memoizedRefreshToken');
 
 export const ErrorIntercept = (response: AxiosInterceptorManager<AxiosResponse>): void => {
   response.use(
@@ -25,7 +22,7 @@ export const ErrorIntercept = (response: AxiosInterceptorManager<AxiosResponse>)
 
         return axiosInstance(config);
       } else if (config.sent) {
-        store.dispatch(logout());
+        // logout
       }
 
       if (err.reponse) {

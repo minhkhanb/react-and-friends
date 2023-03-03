@@ -1,10 +1,9 @@
 import { AxiosInterceptorManager, AxiosRequestConfig } from 'axios';
-import storage from '@src/utils/api/storage';
-import * as constants from 'src/utils/constants';
+import storage from "../storage";
 
 export const JwtIntercept = (request: AxiosInterceptorManager<AxiosRequestConfig>): void => {
   request.use((config) => {
-    const token = storage.loadData(constants.accessTokenKey);
+    const token = storage.loadData('token');
 
     if (token) {
       return {
