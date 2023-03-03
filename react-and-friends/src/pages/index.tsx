@@ -1,12 +1,14 @@
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
 import {getRepositories} from "../services/github.service";
+import {responseDTO} from "../utils/api/utils/formDataCompiler";
 const IndexPage: React.FC<PageProps> = () => {
     React.useEffect(() => {
         const githubRepos = async () => {
-            const response = await getRepositories();
 
-            console.log('response: ', response);
+            const data = await responseDTO(getRepositories);
+
+            console.log('data: ', data);
         }
 
         githubRepos();

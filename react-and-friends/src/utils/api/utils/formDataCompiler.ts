@@ -1,3 +1,5 @@
+import {AxiosResponse} from "axios";
+
 /**
  * Parse object into FormData
  * @param {Object} params
@@ -12,4 +14,16 @@ export const ObjectToFormData = (params: Params = {}): FormData => {
     formData.append(key, params[key]);
   });
   return formData;
+};
+
+export const responseDTO = async <DataType, TParam = unknown>(
+  cb: (options: TParam) => Promise<AxiosResponse<DataType>>,
+  options?: TParam,
+) => {
+  const defaultOptions = {} as TParam;
+  const opts = options ? options : defaultOptions;
+
+  const response = await cb(opts);
+
+  return response?.data;
 };
