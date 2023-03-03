@@ -1,5 +1,5 @@
-import apiClient from "../utils/api/axios";
+import apiClient from '../utils/api/axios';
 
 export function getRepositories() {
-    return apiClient.get('/users/minhkhanb/repos');
+  return apiClient.get('/users/minhkhanb/repos');
 }

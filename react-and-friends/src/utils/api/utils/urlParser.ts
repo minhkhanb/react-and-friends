@@ -4,11 +4,6 @@
  * @param {String} url
  * @param {Object} queryParam
  */
-import { AxiosRequestConfig } from 'axios';
-
-interface CompileAxiosUrlOptions extends AxiosRequestConfig {
-  urlParams?: QueryParam;
-}
 
 type CompileParamToUrlOption = {
   url: string;
@@ -64,21 +59,6 @@ export const compileQueryToUrl = (url: string, queryParam: QueryParam = {}): str
  * To real url: http://example.com/?category=products
  * @param {Object} config
  */
-export const compileAxiosUrl = (config: CompileAxiosUrlOptions = {}): AxiosRequestConfig => {
-  const axiosConfig = { ...config };
-  if (!config.url || !config.baseURL) return config;
-
-  const currentUrl = new URL(config.url, config.baseURL);
-  // parse pathName to implement variables
-  Object.entries(config.urlParams || {}).forEach(([k, v]) => {
-    currentUrl.pathname = currentUrl.pathname.replace(`:${k}`, encodeURIComponent(v as string));
-  });
-
-  axiosConfig.baseURL = `${currentUrl.protocol}//${currentUrl.host}${process.env.VUE_APP_BASE_API_SUFFIX}`;
-  axiosConfig.url = currentUrl.search !== '' ? currentUrl.search : currentUrl.pathname;
-
-  return axiosConfig;
-};
 
 /**
  * Parse url from: http://example.com/product/:id
@@ -88,5 +68,6 @@ export const compileAxiosUrl = (config: CompileAxiosUrlOptions = {}): AxiosReque
  */
 export const compileUrl = (url: string, queryParam = {}): string => {
   const { url: pUrl, params } = compileParamToUrl(url, queryParam);
+
   return compileQueryToUrl(pUrl, params);
 };

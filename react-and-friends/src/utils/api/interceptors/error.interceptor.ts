@@ -1,14 +1,9 @@
-import { AxiosInterceptorManager, AxiosRequestConfig, AxiosResponse } from 'axios';
-import axiosInstance from '../axios';
-
-const memoizedCheckTokenIsExpired = async () => true;
-const memoizedRefreshToken = async () => console.log('memoizedRefreshToken');
+import { AxiosInterceptorManager, AxiosResponse } from 'axios';
 
 export const ErrorIntercept = (response: AxiosInterceptorManager<AxiosResponse>): void => {
   response.use(
     (data) => data,
     async (err) => {
-        console.log('err: ', err);
       // const config = err?.config as AxiosRequestConfig & { sent: boolean };
       //   console.log('config: ', config);
       //

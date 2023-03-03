@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
-import {JwtIntercept} from "./interceptors/jwt.interceptor";
-import {ErrorIntercept} from "./interceptors/error.interceptor";
+import { JwtIntercept } from './interceptors/jwt.interceptor';
+import { ErrorIntercept } from './interceptors/error.interceptor';
 
 const appConfig = {
   API_URL: process.env.GATSBY_API_SERVER_URL,
