@@ -1,5 +1,5 @@
 import { AxiosInterceptorManager, AxiosRequestConfig } from 'axios';
-import storage from "../storage";
+import storage from '../storage';
 
 export const JwtIntercept = (request: AxiosInterceptorManager<AxiosRequestConfig>): void => {
   request.use((config) => {
