@@ -10,12 +10,19 @@ type Params = {
 
 export const ObjectToFormData = (params: Params = {}): FormData => {
   const formData = new FormData();
+
   Object.keys(params).forEach((key) => {
     formData.append(key, params[key]);
   });
+
   return formData;
 };
 
+/**
+ * Parse data from Axios response
+ * @param cb
+ * @param options
+ */
 export const responseDTO = async <DataType, TParam = unknown>(
   cb: (options: TParam) => Promise<AxiosResponse<DataType>>,
   options?: TParam

@@ -1,7 +1,7 @@
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
-import {compileUrl} from "./utils/urlParser";
-import {ObjectToFormData} from "./utils/formDataCompiler";
-import axiosInstance from "./axios";
+import { compileUrl } from './utils/urlParser';
+import { ObjectToFormData } from './utils/formDataCompiler';
+import axiosInstance from './axios';
 
 type RequestOptions = {
   headers?: AxiosRequestConfig['headers'];
