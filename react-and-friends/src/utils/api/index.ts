@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
 import {compileUrl} from "./utils/urlParser";
 import {ObjectToFormData} from "./utils/formDataCompiler";
