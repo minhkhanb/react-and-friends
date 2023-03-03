@@ -10,7 +10,7 @@ export const JwtIntercept = (request: AxiosInterceptorManager<AxiosRequestConfig
         ...config,
         headers: {
           ...config.headers,
-          Authorization: `${JSON.parse(token)}`,
+          Authorization: `Bearer ${token}`,
         },
       };
     }
